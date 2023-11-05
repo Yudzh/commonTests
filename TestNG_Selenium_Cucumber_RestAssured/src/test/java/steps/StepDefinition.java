@@ -1,6 +1,7 @@
 package steps;
 
-import static org.springframework.test.util.AssertionErrors.*;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
+import static storage.KeyWordStorage.USER;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,14 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.util.AssertionErrors;
-import org.springframework.util.Assert;
 import pages.CartPage;
+import pages.CheckoutFirstPage;
+import pages.CheckoutSecondPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 import rest.ApiContainer;
 import springConfig.Config;
 import storage.Users;
+import pojo.User;
 
 @CucumberContextConfiguration
 @ContextConfiguration(classes = Config.class)
@@ -31,6 +33,8 @@ public class StepDefinition extends BaseSteps {
   public LoginPage loginPage;
   public InventoryPage inventoryPage;
   public CartPage cartPage;
+  public CheckoutFirstPage checkoutFirstPage;
+  public CheckoutSecondPage checkoutSecondPage;
 
   @Given("Open login page")
   public void goToLoginPage() {
@@ -67,7 +71,30 @@ public class StepDefinition extends BaseSteps {
 
   @When("Get user")
   public void getUser(){
-    apiContainer.userService.getUser();
+    getDataStorage().add(USER, apiContainer.userService.getUser());
+  }
+
+  @When("Checkout")
+  public void checkout(){
+    cartPage.checkout();
+    checkoutFirstPage = new CheckoutFirstPage(getWebDriver());
+    checkoutFirstPage.fillUserInfo((User) getDataStorage().get(USER));
+    checkoutFirstPage.sendUserInfo();
+  }
+
+  @When("Finish payment")
+  public void finishPayment(){
+    checkoutSecondPage = new CheckoutSecondPage(getWebDriver());
+    checkoutSecondPage.finishPayment();
+  }
+
+  @When("Wait {int} seconds")
+  public void waitSec(int seconds){
+    try {
+      Thread.sleep(seconds * 1000L);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 

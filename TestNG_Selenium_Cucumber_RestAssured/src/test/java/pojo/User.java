@@ -18,7 +18,7 @@ public class User {
   @Getter
   @Setter
   @JsonIgnoreProperties(ignoreUnknown = true)
-  private static class Name {
+  public static class Name {
     @JsonProperty("first")
     private String firstName;
     @JsonProperty("last")
@@ -32,7 +32,7 @@ public class User {
   @Getter
   @Setter
   @JsonIgnoreProperties(ignoreUnknown = true)
-  private static class Location {
+  public static class Location {
     @JsonProperty("postcode")
     private String postCode;
   }

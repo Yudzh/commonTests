@@ -9,6 +9,26 @@
     <artifactId>TestNG_Selenium_Cucumber_RestAssured</artifactId>
     <name>TestNG_Selenium_Cucumber_RestAssured</name>
 
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M6</version>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>2</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <!--    TEST NG    -->
         <dependency>
