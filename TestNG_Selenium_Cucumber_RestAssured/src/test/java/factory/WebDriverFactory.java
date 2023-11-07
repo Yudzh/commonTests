@@ -39,6 +39,13 @@ public class WebDriverFactory {
                 throw new RuntimeException(e);
             }
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-proxy-server");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--dns-prefetch-disable");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--force-device-scale-factor=1");
+            options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             return new RemoteWebDriver(seleniumHubURL, options);
         }
         ChromeOptions options = new ChromeOptions();
