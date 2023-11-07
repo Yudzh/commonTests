@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        jdk 'JDK11'
-        maven '3.8.1'
+        jdk '11'
+        maven 'Maven3.8.1'
     }
     stages {
         stage('git clone') {
