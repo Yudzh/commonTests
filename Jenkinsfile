@@ -14,7 +14,7 @@ pipeline {
         }
         stage('tests') {
             steps {
-                sh 'mvn clean install -DseleniumHub=http://localhost:4444/wd/hub'
+                sh 'mvn clean install -DseleniumHub=selenium-hub:4444'
             }
         }
     }
