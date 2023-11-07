@@ -4,8 +4,9 @@ pipeline {
         jdk 'JDK11'
         maven 'Maven3.8.1'
     }
+
     stages {
-        stage {
+        stage('EXAMPLE') {
             steps {
                 sh 'echo JAVA_HOME=$JAVA_HOME'
             }
