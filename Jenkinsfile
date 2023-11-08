@@ -21,6 +21,8 @@ pipeline {
     post {
         always {
             echo 'create allure reports'
+            sh 'mkdir -p allure-results'
+            sh 'mv target/allure-results/* allure-results/'
             allure([
                                     includeProperties: false,
                                     jdk              : '',
