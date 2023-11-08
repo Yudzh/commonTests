@@ -26,7 +26,7 @@ pipeline {
                                     jdk              : '',
                                     properties       : [],
                                     reportBuildPolicy: 'ALWAYS',
-                                    results          : [[path: "build/allure-results"]]
+                                    results          : [[path: "build/TestNG_Selenium_Cucumber_RestAssured/target/allure-results"]]
                             ])
 
         }
