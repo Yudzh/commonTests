@@ -21,14 +21,13 @@ pipeline {
     post {
         always {
             echo 'create allure reports'
-            sh 'mkdir -p allure-results'
-            sh 'mv target/allure-results/* allure-results/'
+            sh 'ls'
             allure([
                                     includeProperties: false,
                                     jdk              : '',
                                     properties       : [],
                                     reportBuildPolicy: 'ALWAYS',
-                                    results          : [[path: '/target/allure-results']]
+                                    results          : [[path: 'TestNG_Selenium_Cucumber_RestAssured/target/allure-results']]
                             ])
 
         }
