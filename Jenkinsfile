@@ -18,4 +18,17 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'create allure reports'
+            allure([
+                                    includeProperties: false,
+                                    jdk              : '',
+                                    properties       : [],
+                                    reportBuildPolicy: 'ALWAYS',
+                                    results          : [[path: "build/allure-results"]]
+                            ])
+
+        }
+    }
 }
