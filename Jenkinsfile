@@ -21,13 +21,9 @@ pipeline {
     post {
         always {
             echo 'create allure reports'
-            allure([
-                                    includeProperties: false,
-                                    jdk              : '',
-                                    properties       : [],
-                                    reportBuildPolicy: 'ALWAYS',
-                                    results          : [[path: "build/TestNG_Selenium_Cucumber_RestAssured/target/allure-results"]]
-                            ])
+            always {
+                                allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
+                            }
 
         }
     }
