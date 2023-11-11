@@ -27,8 +27,5 @@ public class BeforeAfterSteps extends BaseSteps{
         }
     }
 
-    @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] screenshot() {
-        return ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
-    }
+
 }

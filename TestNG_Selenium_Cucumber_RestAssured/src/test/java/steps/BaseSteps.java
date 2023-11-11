@@ -2,6 +2,9 @@ package steps;
 
 import factory.TestContextFactory;
 import factory.WebDriverFactory;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import rest.ApiContainer;
@@ -31,6 +34,11 @@ public class BaseSteps {
             driver.set(WebDriverFactory.getWebDriver());
         }
         return driver.get();
+    }
+
+    @Attachment(value = "Screenshot", type = "image/png")
+    public byte[] screenshot() {
+        return ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
     }
 
 
