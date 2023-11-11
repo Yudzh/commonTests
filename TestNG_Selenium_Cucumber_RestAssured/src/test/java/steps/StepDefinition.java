@@ -60,7 +60,6 @@ public class StepDefinition extends BaseSteps {
 
   @When("Go to cart page")
   public void goToCart() {
-    screenshot();
     inventoryPage.goToCart();
     cartPage = new CartPage(getWebDriver());
   }
@@ -77,6 +76,7 @@ public class StepDefinition extends BaseSteps {
 
   @When("Checkout")
   public void checkout(){
+    screenshot();
     cartPage.checkout();
     checkoutFirstPage = new CheckoutFirstPage(getWebDriver());
     checkoutFirstPage.fillUserInfo((User) getDataStorage().get(USER));
