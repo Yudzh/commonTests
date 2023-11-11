@@ -76,7 +76,6 @@ public class StepDefinition extends BaseSteps {
 
   @When("Checkout")
   public void checkout(){
-    screenshot();
     cartPage.checkout();
     checkoutFirstPage = new CheckoutFirstPage(getWebDriver());
     checkoutFirstPage.fillUserInfo((User) getDataStorage().get(USER));
