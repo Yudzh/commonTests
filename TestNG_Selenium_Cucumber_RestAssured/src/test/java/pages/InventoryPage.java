@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import org.openqa.selenium.By;
@@ -29,11 +30,13 @@ public class InventoryPage extends BasePage {
     return driver.findElements(INVENTORY).size();
   }
 
+  @Step("Try to buy an item")
   public void buyAnyItem(){
     int random = ThreadLocalRandom.current().nextInt(1,6);
     driver.findElements(BUY_BUTTONS).get(random).click();
   }
 
+  @Step("Click on cart button")
   public void goToCart(){
     buttonClick(cartButton);
   }
