@@ -11,6 +11,7 @@
 
     <modules>
         <module>TestNG_Selenium_Cucumber_RestAssured</module>
+        <module>JUnit_Selenide_RestAssured</module>
     </modules>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
